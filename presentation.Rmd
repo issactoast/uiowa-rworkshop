@@ -13,6 +13,8 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: "16:9"
+    includes:
+      after_body: insert-logo.html
 ---
 
 ```{r setup, include=FALSE}
@@ -23,34 +25,32 @@ options(htmltools.dir.version = FALSE)
 library(tidyverse)
 library(reticulate)
 library(xaringanthemer)
-style_duo_accent(
+style_mono_dark(
   text_font_size = "1.3rem",
   footnote_font_size = "0.6em",
   footnote_position_bottom = "20px",
-  # background_color = "#000000",
-  # primary_color = "#FFCD00",
-  # secondary_color = "#00558C",
-  # text_bold_color = "#00558C",
-  text_color = "#000",
-  # inverse_header_color = "#bbbdbc",
-  code_font_google   = google_font("Fira Mono")
+  base_color = "#FFCD00",
+  black_color = "#000000", 
+  text_bold_color = "#BD472A",
+  code_font_google = google_font("Fira Mono")
 )
 ```
 
-class: center, middle
+class: center, middle, hide-logo
 
-# The University of **Iowa**
+# The University of Iowa
 
 ![](https://upload.wikimedia.org/wikipedia/en/thumb/4/49/University_of_Iowa_seal.svg/225px-University_of_Iowa_seal.svg.png)
 
 ## Statistics and Actuarial Science
 
 ---
-class: center, middle
+class: center, middle, hide-logo
 
 # Why RMarkdown?
 
 ---
+class: hide-logo
 <iframe width="1300" height="600" src="https://www.youtube.com/embed/s3JldKoA0zw?version=3&rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 class: center, middle
@@ -101,9 +101,9 @@ class: center, middle
 # Useful 3 tips!
 
 ---
-# Use **R**markdown as **Python**down!
+# Use **R**md as **Py**md!
 
-* R package `reticulate` allows us to use Rmarkdown for handling `python`.
+* R package `reticulate` allows us to use Rmarkdown for handling `python` code.
 
   * https://rstudio.github.io/reticulate/index.html
 
@@ -243,7 +243,7 @@ knitr::include_graphics("./snippet.jpg")
 ]
 
 ---
-class: center, middle, inverse
+class: center, middle
 
 # Live demo
 
@@ -355,7 +355,7 @@ plot_speed(sample_trip$speed_data, tripname = "the sample trip")
 ---
 # Can we add this to the map?
 
-```{r, fig.align='center'}
+```{r, fig.align='center', message=FALSE, warning=FALSE}
 library(gganimate)
 p <- p + transition_reveal(time) +
     ease_aes('linear')

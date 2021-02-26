@@ -24,20 +24,21 @@ class: center, middle, inverse, title-slide
 
 
 
-class: center, middle
+class: center, middle, hide-logo
 
-# The University of **Iowa**
+# The University of Iowa
 
 ![](https://upload.wikimedia.org/wikipedia/en/thumb/4/49/University_of_Iowa_seal.svg/225px-University_of_Iowa_seal.svg.png)
 
 ## Statistics and Actuarial Science
 
 ---
-class: center, middle
+class: center, middle, hide-logo
 
 # Why RMarkdown?
 
 ---
+class: hide-logo
 &lt;iframe width="1300" height="600" src="https://www.youtube.com/embed/s3JldKoA0zw?version=3&amp;rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 ---
 class: center, middle
@@ -88,9 +89,9 @@ class: center, middle
 # Useful 3 tips!
 
 ---
-# Use **R**markdown as **Python**down!
+# Use **R**md as **Py**md!
 
-* R package `reticulate` allows us to use Rmarkdown for handling `python`.
+* R package `reticulate` allows us to use Rmarkdown for handling `python` code.
 
   * https://rstudio.github.io/reticulate/index.html
 
@@ -234,7 +235,7 @@ Table: caption
 ]
 
 ---
-class: center, middle, inverse
+class: center, middle
 
 # Live demo
 
@@ -502,6 +503,33 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
+<style>
+.logo {
+  background-image: url(uilogo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0em;
+  right: 0em;
+  width: 139px;
+  height: 135px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
 
 <script>
 slideshow._releaseMath = function(el) {
