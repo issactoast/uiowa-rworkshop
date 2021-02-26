@@ -255,11 +255,7 @@ class: center, middle
 ---
 # I Know How You Drive
 
-* I wrote `R` package, `ikhyd`.
-
-* Mainly for driving behavior analysis, but it has a **GPS visualization** function `track_vis()`.
-
-* I will guide you how to make this function
+* `R` package, `ikhyd`, is for driving behavior analysis, but it has a **GPS visualization** function `track_vis()`.
 
 
 ```{r}
@@ -364,6 +360,6 @@ p
 
 
 ---
-class: center, middle, inverse
+class: center, middle
 
 # Thanks!
