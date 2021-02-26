@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R Markdown tips and GPS data visualization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Issac Lee" />
+    <meta name="date" content="2021-02-26" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# R Markdown tips and GPS data visualization
+## R workshop
+### Issac Lee
+### 2021-02-26
+
+---
+
+
+
+
+
+
+class: center, middle
+
+# The University of **Iowa**
+
+![](https://upload.wikimedia.org/wikipedia/en/thumb/4/49/University_of_Iowa_seal.svg/225px-University_of_Iowa_seal.svg.png)
+
+## Statistics and Actuarial Science
+
+---
+class: center, middle
+
+# Why RMarkdown?
+
+---
+&lt;iframe width="1300" height="600" src="https://www.youtube.com/embed/s3JldKoA0zw?version=3&amp;rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+---
+class: center, middle
+
+# We use them in our daily life..
+
+---
+
+# **R**Markdown packages
+
+.pull-left[
+
+* [**Bookdown**](https://bookdown.org/yihui/bookdown/) - pdf, epub, or html book
+
+  * Writing a gitbook like [Prof. Tierney](http://homepage.stat.uiowa.edu/~luke/classes/STAT7400-2021/_book/index.html)
+
+* [**Blogdown**](https://bookdown.org/yihui/blogdown/) - Static website builder Hugo wrapper
+
+  * Personal website like [me](theissaclee.com)
+
+  * Theme: Academy, Apero (is developing by Rstudio)
+
+* [**Pagedown**](https://pagedown.rbind.io/): single html document generation. a.k.a. goodbye LaTeX?
+
+]
+.pull-right[
+
+* [**Distill**](https://rstudio.github.io/distill/): if you really like minimalizm.
+
+  * Concept is developed by Google, package developed by Rstudio.
+  * Suitible for academic writing
+
+* [**Xaringan**](https://slides.yihui.org/xaringan/#1): Presentation
+
+  *  Like the one you're looking at.
+
+  * `xaringan themer` - Easy theme for `xaringan` 
+  
+* [**Thesisdown**](https://github.com/ismayc/thesisdown): Thesis with Rmd.
+
+]
+---
+
+class: center, middle
+
+# Use them wisely!
+
+# Useful 3 tips!
+
+---
+# Use **R**markdown as **Python**down!
+
+* R package `reticulate` allows us to use Rmarkdown for handling `python`.
+
+  * https://rstudio.github.io/reticulate/index.html
+
+.pull-left[
+
+* Use `python` code chunk in your `.Rmd` file!
+
+````markdown
+```{r}
+library(reticulate)
+```
+
+```{python}
+import numpy
+import pandas
+
+```
+````
+
+]
+.pull-right[
+![](https://rstudio.github.io/reticulate/images/reticulated_python.png)
+]
+
+---
+# Shortcuts!
+
+`Alt` + `Shift` + `K` shows all shortcuts! However, some are USEFUL, some are **NOT**!
+
+### Useful **Shortcuts!**
+
+.pull-left[
+
+add `%&gt;%` operator: `Ctrl` + `Shift` + `m`
+
+add `&lt;-` operator: `Alt` + -
+
+add cursors! : `Ctrl` + `Alt` + down or up
+
+search functions: `Ctrl` + .
+
+search commands: `Ctrl` + `Shift` + `p`
+
+]
+.pull-right[
+
+Run current chunk: `Ctrl` + `Alt` + `c`
+
+R code re-formatting: `Ctrl` + `Shift` + `a`
+
+Copy current below: `Shift` + `Alt` + down
+
+Insert `R` code chunk: `Ctrl` + `Alt` + i
+
+]
+
+---
+class: center, middle
+
+# However, so many syntax tho..
+
+---
+
+# Including images
+
+.pull-left[
+
+Should I type all of these to insert just a picture?
+
+````markdown
+```{r chunkname, 
+            fig.cap="picture caption",
+            fig.align="center",
+            out.width="50%"}
+knitr::include_graphics("question.png")
+```
+````
+]
+
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./question.svg" alt="picture caption" width="50%" /&gt;
+&lt;p class="caption"&gt;picture caption&lt;/p&gt;
+&lt;/div&gt;
+
+]
+---
+# Tables
+
+.pull-left[
+
+Should I memorize all these options for generating table?
+
+````markdown
+```{r}
+knitr::kable(head(as.tibble(mtcars[,1:3]), 5), 
+             position = "!h",
+             col.names = c("col1", "col2", "col3"),
+             caption = "caption", 
+             align = "lrc", booktab = TRUE)
+```
+````
+]
+
+.pull-right[
+
+Table: caption
+
+|col1 | col2| col3 |
+|:----|----:|:----:|
+|21.0 |    6| 160  |
+|21.0 |    6| 160  |
+|22.8 |    4| 108  |
+|21.4 |    6| 258  |
+|18.7 |    8| 360  |
+
+]
+
+---
+# Snippet will **save** you
+
+**Snippet** save your time, almost 1 year during your whole life, no joke.
+
+.pull-left[
+### What the hack is snippet
+* **Text macros** that are used for quickly inserting common snippets of code
+
+* `Tools` &gt; `Global option` &gt; `Code` &gt; `Snippet`
+
+* Some people know there are *code snippet* in Rstudio
+
+]
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./snippet.jpg" alt="Available snippets languages" width="80%" /&gt;
+&lt;p class="caption"&gt;Available snippets languages&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: center, middle, inverse
+
+# Live demo
+
+---
+
+
+
+---
+class: center, middle, inverse
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
